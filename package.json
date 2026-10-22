@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "create-admin": "node src/utils/createAdmin.js"
+    "create-admin": "node src/utils/createAdmin.js",
+    "seed": "node src/utils/seed.js"
   },
   "repository": {
     "type": "git",

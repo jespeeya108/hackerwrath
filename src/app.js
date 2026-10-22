@@ -7,6 +7,9 @@ const rateLimit = require('express-rate-limit');
 const config = require('./config/env');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 const authRoutes = require('./routes/authRoutes');
+const subjectRoutes = require('./routes/subjectRoutes');
+const attendanceRoutes = require('./routes/attendanceRoutes');
+const studentRoutes = require('./routes/studentRoutes');
 
 const app = express();
 
@@ -29,7 +32,10 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/auth', authLimiter, authRoutes);
-// Stage 2+: attendance, exams, syllabus, calendar, placements, results go here
+app.use('/api/subjects', subjectRoutes);
+app.use('/api/attendance', attendanceRoutes);
+app.use('/api/students', studentRoutes);
+// Stage 3+: exams, calendar, syllabus, placements, results go here
 
 app.use(notFound);
 app.use(errorHandler);
